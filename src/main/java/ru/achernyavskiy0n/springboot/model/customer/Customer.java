@@ -1,5 +1,6 @@
 package ru.achernyavskiy0n.springboot.model.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.achernyavskiy0n.springboot.model.order.Order;
@@ -33,6 +34,7 @@ public class Customer {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.REMOVE)
     @OrderBy("dateTime DESC")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private List<Order> orders;
 
     public Customer() {

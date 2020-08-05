@@ -2,13 +2,13 @@ package ru.achernyavskiy0n.springboot.service.customer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.achernyavskiy0n.springboot.model.customer.Customer;
 import ru.achernyavskiy0n.springboot.repository.customer.CustomerRepository;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -20,9 +20,13 @@ import java.util.List;
 public class CustomerService {
     private static final Logger log = LoggerFactory.getLogger(CustomerService.class);
 
-    @Autowired
-    private CustomerRepository repository;
+    private final CustomerRepository repository;
 
+    public CustomerService(CustomerRepository repository) {
+        this.repository = repository;
+    }
+
+    @Cacheable("customers")
     @Transactional(readOnly = true)
     public List<Customer> findAll() {
         log.info("getAll");
@@ -35,8 +39,9 @@ public class CustomerService {
         return repository.findById(customerId);
     }
 
+    @CacheEvict(value = "customers", allEntries = true)
     @Transactional
-    public Customer save(@NotNull Customer customer) {
+    public Customer save(Customer customer) {
         log.debug("Save customer " + customer);
         return repository.save(customer);
     }

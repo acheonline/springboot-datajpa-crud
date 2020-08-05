@@ -1,6 +1,9 @@
 package ru.achernyavskiy0n.springboot.TestUtil;
 
 import ru.achernyavskiy0n.springboot.model.customer.Customer;
+
+import java.util.List;
+
 import static ru.achernyavskiy0n.springboot.model.customer.Customer.START_SEQ;
 
 /**
@@ -18,6 +21,8 @@ public class CustomerTestData {
     public static final Customer CUSTOMER_1 = new Customer(CUSTOMER_ID1, "User");
     public static final Customer CUSTOMER_2 = new Customer(CUSTOMER_ID2, "Admin");
     public static final Customer CUSTOMER_3 = new Customer(CUSTOMER_ID3, "God");
+
+    public static final List<Customer> CUSTOMERS = List.of(CUSTOMER_1, CUSTOMER_2, CUSTOMER_3);
 
     public static final Customer NEW_CUSTOMER = new Customer(100003, "new_customer");
     public static final int NEW_CUSTOMER_ID = START_SEQ + 3;

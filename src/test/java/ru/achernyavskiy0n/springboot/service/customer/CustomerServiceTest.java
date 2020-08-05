@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import ru.achernyavskiy0n.springboot.model.customer.Customer;
 
-import java.util.List;
-
 import static ru.achernyavskiy0n.springboot.TestUtil.CustomerTestData.*;
 
 /**
@@ -53,7 +51,7 @@ public class CustomerServiceTest {
 
     @Test
     public void getAll() throws Exception {
-        Assert.assertEquals(service.findAll(), List.of(CUSTOMER_1, CUSTOMER_2, CUSTOMER_3));
+        Assert.assertEquals(service.findAll(), CUSTOMERS);
     }
 
     @Test
