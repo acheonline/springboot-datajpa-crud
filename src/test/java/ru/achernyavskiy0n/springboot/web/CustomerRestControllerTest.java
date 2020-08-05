@@ -39,7 +39,7 @@ import static ru.achernyavskiy0n.springboot.TestUtil.json.JsonUtils.convertObjec
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Sql(scripts = "classpath:/db/populateDB.sql",
+@Sql(scripts = "classpath:db/populateDB.sql",
         config = @SqlConfig(encoding = "UTF-8"))
 public class CustomerRestControllerTest {
     private static final String URL = CustomerRestController.REST_URL + '/';
