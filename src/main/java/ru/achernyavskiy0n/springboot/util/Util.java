@@ -8,8 +8,12 @@ import org.hibernate.Hibernate;
  * @author a.chernyavskiy0n
  */
 public class Util {
-
-    public static <T> T unproxy(T t) {
-        return (T) Hibernate.unproxy(t);
+    @SuppressWarnings("unchecked")
+    public static <T> T unproxy(T entity) {
+        if (entity == null) {
+            throw new
+                    NullPointerException("Entity passed for initialization is null");
+        }
+        return (T) Hibernate.unproxy(entity);
     }
 }
