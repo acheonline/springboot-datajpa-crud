@@ -73,16 +73,4 @@ public class JsonUtils {
             throw new IllegalArgumentException("Invalid read array from JSON:\n'" + json + "'", e);
         }
     }
-
-    public static <T> T readFromJson(ResultActions action, Class<T> clazz) throws UnsupportedEncodingException {
-        return readValue(getContent(action.andReturn()), clazz);
-    }
-
-    public static <T> String writeValue(T obj) {
-        try {
-            return getMapper().writeValueAsString(obj);
-        } catch (JsonProcessingException e) {
-            throw new IllegalStateException("Invalid write to JSON:\n'" + obj + "'", e);
-        }
-    }
 }
