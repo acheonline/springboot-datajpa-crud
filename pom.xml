@@ -9,7 +9,7 @@
 
     <properties>
         <start-class>ru.achernyavskiy0n.springboot.SpringBootStarterExample</start-class>
-        <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.12</spring.boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
